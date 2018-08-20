@@ -1,0 +1,41 @@
+name: telegram-bot-api
+version: 1.0.0
+deps:
+  jphp-core: '*'
+  jphp-json-ext: '*'
+
+devDeps:
+  dn-bundle-plugin: '*'
+
+sources:
+- src
+plugins:
+- Doc
+- Hub
+
+config:
+  ignore:
+  - /sandbox/**
+  - /.idea/**
+  - /*.iml
+  - /.git/**
+  - /package.hub.yml
+  - /bundle/**
+  - /src-bundle/**
+  - /build
+  - /out/**
+  - /examples/**
+  - /dn-sources/**
+  - /.gitignore
+  - /package.build.php
+  - /README.MD
+  - /LICENSE
+
+develnext-bundle:
+  version: 1.0.0
+  name: Telegram Bot API
+  author: broelik
+  icon: "develnext/bundle/telegram/icon32.png"
+  description: "Пакет для работы с Telegram Bot API"
+  group: "network"
+  class: "develnext\\bundle\\telegram\\TelegramBotAPIBundle"
