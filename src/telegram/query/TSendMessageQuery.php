@@ -4,8 +4,10 @@
 namespace telegram\query;
 
 
-use telegram\object\TMessage;
 use telegram\TelegramBotApi;
+use telegram\exception\TelegramException;
+use telegram\object\TMessage;
+use telegram\object\markup\AbstractMarkup;
 
 class TSendMessageQuery extends TBaseQuery{
     public function __construct(TelegramBotApi $api){
@@ -47,11 +49,23 @@ class TSendMessageQuery extends TBaseQuery{
     public function reply_to_message_id($value){
         return $this->put(__FUNCTION__, (int)$value);
     }
-    /*
+    
+    /**
+     * @param array|TAbstractMarkup
+     * @return TSendMessageQuery
+     */
     public function reply_markup($value){
-        return $this->put(__FUNCTION__, $value);
+        if(is_array($value)){
+            return $this->put(__FUNCTION__, $value);
+        }
+        elseif($value instanceof AbstractMarkup){
+            return $this->put(__FUNCTION__, $value->getMarkup());
+        }
+        else {
+            throw new TelegramException('Invalid reply_markup parameter');
+        }
     }
-    */
+    
     /**
      * @return TMessage
      */
