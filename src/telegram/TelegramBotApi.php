@@ -17,6 +17,7 @@ use php\net\URL;
 use php\net\URLConnection;
 use telegram\exception\TelegramError;
 use telegram\exception\TelegramException;
+use telegram\query\TAnswerCallbackQuery;
 use telegram\query\TForwardMessageQuery;
 use telegram\query\TGetFileQuery;
 use telegram\query\TGetMeQuery;
@@ -161,6 +162,13 @@ class TelegramBotApi{
      */
     function getUpdates(){
         return new TGetUpdatesQuery($this);
+    }
+
+    /**
+     * @return TAnswerCallbackQuery
+     */
+    function answerCallbackQuery(){
+        return new TAnswerCallbackQuery($this);
     }
 
 
