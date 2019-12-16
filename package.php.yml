@@ -1,5 +1,5 @@
 name: telegram-bot-api
-version: 1.0.0
+version: 1.1.0
 deps:
   jphp-core: '*'
   jphp-json-ext: '*'
@@ -19,6 +19,7 @@ config:
   - /.idea/**
   - /*.iml
   - /.git/**
+  - /.phpintel/**
   - /package.hub.yml
   - /bundle/**
   - /src-bundle/**
