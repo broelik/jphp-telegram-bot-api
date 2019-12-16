@@ -16,3 +16,4 @@
 /package-lock.php.yml
 /out/**
 /dn-sources/**
+.phpintel/**
