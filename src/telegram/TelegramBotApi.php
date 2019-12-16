@@ -196,10 +196,14 @@ class TelegramBotApi{
             else{
                 $connection->getOutputStream()->write($this->json->format($args));
             }
+
             if($connection->responseCode != 200){
-                throw new TelegramException("Server response invalid status code {$connection->responseCode}");
+                $rawResponse = $connection->getErrorStream()->readFully();
+                if(strlen($rawResponse) == 0) throw new TelegramException("Server response invalid status code {$connection->responseCode}");
+            } else {
+                $rawResponse = $connection->getInputStream()->readFully();
             }
-            $rawResponse = $connection->getInputStream()->readFully();
+
             $connection->disconnect();
             $response = $this->json->parse($rawResponse);
             if(!$response->ok){
